@@ -1,0 +1,85 @@
+
+
+/* Sidebar */
+
+.sidebar-content {
+  padding: 12px 24px !important;
+}
+
+
+
+.my-accordion {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.my-accordion .accordion-item {
+  border-radius: 8px;
+}
+
+.my-accordion .accordion-button {
+  font-weight: bold;
+}
+
+.my-accordion .accordion-body {
+  padding: 5px 20px;
+}
+
+
+/* Fix VirtualSelect dropdown clipping and direction */
+
+/* Fix for dropdown positioning and clipping */
+.vscomp-options-container {
+  position: absolute !important;
+  top: 100% !important;
+  bottom: auto !important;
+  z-index: 9999 !important;
+  background-color: white;
+}
+
+/* Prevent parent containers from hiding dropdowns */
+.accordion-item,
+.bslib-sidebar,
+.bslib-page-sidebar,
+.nav-panel,
+.navbar-page {
+  overflow: visible !important;
+}
+
+/* Ensure the main dropdown wrapper uses body positioning */
+.vscomp-dropbox {
+  position: absolute !important;
+}
+
+
+/* Left-align button text */
+
+.btn-group-container-sw .btn {
+  text-align: left !important;
+  justify-content: flex-start !important;
+}
+
+
+/* Info icons */
+.info-icon {
+  color: #A3A3A3;
+}
+
+.info-icon:hover {
+  color: #D3D3D3;
+}
+
+
+/* Tippy box */
+
+.tippy-box {
+  transform: translateX(15px); /* push all tooltips 15px right */
+}
+
+.tippy-tooltip {
+  text-align: left;
+  margin: 5px;
+  font-size: 8pt;
+}
+
+
