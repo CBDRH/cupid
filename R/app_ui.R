@@ -12,18 +12,54 @@ app_ui <- function(request) {
 
     # Your application UI logic
     page_navbar(
-      title = "CUPID",
+      title = "CommUnity Prevention Initiative Dashboard (CUPID)",
       theme = bslib::bs_theme(
         bootswatch = "cosmo"),
 
       # First navbar tab
       nav_panel(
-        title = "Prevention Menu",
+        title = "Filters",
 
         page_sidebar(
 
-          sidebar = sidebar(class = "my-sidebar",
-            helpText("Select your search criteria"),
+          sidebar = sidebar(class = "my-sidebar", width=250,
+            # helpText("Select your search criteria"),
+
+            # value_box(
+            #   title = "Number of studies based on applied filters",
+            #   value = uiOutput("searchCount"),
+            #   showcase = icon("home"),
+            #   theme = "secondary",
+            #   # Search button
+            # ),
+
+
+            # custom value box
+            tags$div(
+              class = "custom-value-box",
+
+              # top row: icon + value
+              tags$div(
+                class = "box-top-row",
+                tags$div(class = "box-icon", icon("file-pdf")),
+                tags$div(class = "box-value", uiOutput("searchCount"))
+              ),
+
+              # explanatory text (full width)
+              tags$div(class = "box-text", uiOutput("searchMessage")),
+
+              # full-width button
+              tags$div(
+                class = "box-button",
+                actionBttn(
+                  inputId = 'bttnFilter',
+                  label = "Summarise Evidence",
+                  icon = icon("scale-balanced"),
+                  size = 'xs',
+                  block = TRUE
+                )
+              )
+            ),
 
             accordion(
               class = "my-accordion",
@@ -36,37 +72,13 @@ app_ui <- function(request) {
 
                 "Intervention",
 
-                checkboxGroupButtons(
-                  inputId = "drug",
-                  label = tags$span("Drug type",
-                                    tags$span(id = "info_drug", icon("info-circle", class = "info-icon"))
-                  ),
-                  choices = c("Alcohol",
-                              "Nicotene",
-                              "Cannabis",
-                              "Other drugs"),
-                  selected = c('Alcohol'),
-                  direction = "vertical",
-                  size = 'sm',
-                  width = '150px',
-                  checkIcon = list(yes = icon("ok", lib = "glyphicon"))
-                ),
-                tippy_this("info_drug", placement = "right", theme = "light",
-                           tooltip = "Select one of more drug types.\nNicotene includes tobacco,
-                         smokeless tobacco and vaping. Other drugs includes methamphetamine,
-                         ecstacy, cocaine, inhalants, opioids, caffiene, pharmaceuticals,
-                         nitrous oxide, and any unspecified substance."
-                ),
-
                 virtualSelectInput(
                   inputId = "initiative",
                   label = tags$span("Initiative type",
                                     tags$span(id = "info_initiative", icon("info-circle", class = "info-icon"))
                   ),
 
-                  selected = c("Alternative activities",
-                               "Dry events",
-                               "Building community support"),
+                  selected = NULL,
                   choices = list(
                     "Community mobilisation" = c("Alternative activities",
                                                  "Dry events",
@@ -76,8 +88,8 @@ app_ui <- function(request) {
                                                "Coordinating coalition activities"),
                     "Community-level policy" = c("Banning production",
                                                  "Limiting sales",
-                                                 "Licensed premises / vendor / retail outlet density",
-                                                 "Licensed premises / vendor / retail outlet operating hours / days",
+                                                 "Licensed premises outlet density",
+                                                 "Licensed premises outlet operating hours",
                                                  "Legal purchasing age",
                                                  "Product strength",
                                                  "Advertising / marketing restrictions",
@@ -96,7 +108,7 @@ app_ui <- function(request) {
                                                      "Information dissemination",
                                                      "Roadside checkpoints",
                                                      "Compliance checking"),
-                    "Licensed premisis / vendor / retail outlet" = c("Responsible service training",
+                    "Licensed premises / vendor / retail outlet" = c("Responsible service training",
                                                                      "Policy change (individual vendor, voluntary)",
                                                                      "Environmental safety (individual vendor[s])",
                                                                      "Restrictions for high risk patrons"),
@@ -114,12 +126,34 @@ app_ui <- function(request) {
                   ),
                   showValueAsTags = TRUE,
                   search = TRUE,
-                  multiple = TRUE,
-                  showDropboxAsPopup = TRUE
+                  multiple = TRUE
                 ),
                 tippy_this("info_initiative", placement = "right", theme = "light",
                             tooltip = "Select one or more initiatives"
-                )
+                ),
+
+
+              checkboxGroupButtons(
+                inputId = "drug",
+                label = tags$span("Drug type",
+                                  tags$span(id = "info_drug", icon("info-circle", class = "info-icon"))
+                ),
+                choices = c("Alcohol",
+                            "Nicotine",
+                            "Cannabis",
+                            "Other drugs"),
+                selected = c('Alcohol'),
+                direction = "vertical",
+                size = 'sm',
+                width = '150px',
+                checkIcon = list(yes = icon("ok", lib = "glyphicon"))
+              ),
+              tippy_this("info_drug", placement = "right", theme = "light",
+                         tooltip = "Select one of more drug types.\nNicotine includes tobacco,
+                         smokeless tobacco and vaping. Other drugs includes methamphetamine,
+                         ecstacy, cocaine, inhalants, opioids, caffiene, pharmaceuticals,
+                         nitrous oxide, and any unspecified substance."
+              )
 
 
               ),
@@ -268,8 +302,8 @@ app_ui <- function(request) {
                   width = '150px',
                   checkIcon = list(yes = icon("ok", lib = "glyphicon")),
                   label = "Sample",
-                  choices = c("Small (≤500)", "Medium (500-5000)", "Large (≥5000)"),
-                  selected = c("Small (≤500)", "Medium (500-5000)", "Large (≥5000)")
+                  choices = c("Small (\u2264 500)", "Medium (500-5000)", "Large (\u2265 5000)"),
+                  selected = c("Small (\u2264 500)", "Medium (500-5000)", "Large (\u2264 5000)")
                 ),
 
                 # quality
@@ -292,7 +326,15 @@ app_ui <- function(request) {
 
           ),
 
-          plotOutput("randplot1")
+          page_fillable(
+
+            layout_columns(
+
+
+
+            ) # layout_columns
+
+          ) # Closes page_fillable
 
           ) # Closes page_sidebar
         ) # closes nav panel

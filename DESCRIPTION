@@ -1,18 +1,21 @@
 Package: cupid
-Title: Prevention menu dashboard
+Title: CUPID
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Mark",
            family = "Hanly",
            role = c("aut", "cre"),
            email = "m.hanly@unsw.edu.au")
-Description: Sumamrising literature on drug and alcohol prevention strategies
-License: What license is it under?
+Description: CommUnity Prevention Initiative Dashboard (CUPID) 
+License: MIT + file LICENSE
 Imports: 
     bslib,
     config (>= 0.3.2),
     golem (>= 0.4.1),
-    shiny (>= 1.7.5)
+    pkgload,
+    shiny (>= 1.7.5),
+    shinyWidgets,
+    tippy
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.2.3

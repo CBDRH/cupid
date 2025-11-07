@@ -1,3 +1,5 @@
+#  options(shiny.launch.browser = .rs.invokeShinyWindowViewer)
+
 # Set options here
 options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
 
