@@ -6,6 +6,12 @@
   padding: 12px 24px !important;
 }
 
+/* The top page banner */
+#banner {
+  background-color: whitesmoke;
+  padding: 5px 10px;
+  width: 100%;
+}
 
 
 .my-accordion {
@@ -49,6 +55,31 @@
 /* Ensure the main dropdown wrapper uses body positioning */
 .vscomp-dropbox {
   position: absolute !important;
+  width: 100%;
+}
+
+.vscomp-options-container {
+  width: 100%;
+  height: 600px;
+}
+
+.vscomp-option {
+  background-color: whitesmoke;
+  height: 24px !important;    /* <- set whatever height you want */
+  min-height: 24px !important; /* VS adds min-height too */
+  line-height: 24px !important; /* keeps text vertically centered */
+}
+
+.group-option {
+
+}
+
+.vscomp-option-text {
+
+}
+
+.vscomp-ele-wrapper {
+  font-size: 12px;
 }
 
 .vscomp-option.group-title .vscomp-option-text {
@@ -59,6 +90,7 @@
 
 .vscomp-dropbox-container {
   bottom: 100%;
+  width: 100% !important;
 }
 
 .sidebar {
@@ -69,6 +101,22 @@
   z-index: 2000 !important;
   parent: body;
 }
+
+
+.myLightbulb {
+  color: #FFE66D;
+}
+
+/* when the option is hovered/focused */
+.vscomp-option.group-option.focused .myLightbulb {
+  color: #e8871e;   /* new color on focus */
+}
+
+/* when the option is selected */
+.vscomp-option.group-option.selected .myLightbulb {
+  color: #ce9612;   /* new color on focus */
+}
+
 
 
 /* Handles the button with summary search results */

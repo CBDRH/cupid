@@ -2,6 +2,7 @@
 
 export(run_app)
 import(bslib)
+import(dplyr)
 import(shiny)
 import(shinyWidgets)
 import(tippy)

@@ -5,6 +5,6 @@ account: cbdrh
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 15914701
-bundleId: 11106320
+bundleId: 11144294
 url: https://cbdrh.shinyapps.io/cupid/
 version: 1
